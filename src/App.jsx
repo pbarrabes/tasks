@@ -8,20 +8,20 @@ import { getTasks } from './servicios/getTasks'
 function App() {
 
   const [tasks,setTasks] = useState([])
-  const [pedirTasks,setPedirTasks]=useState(false);
+  //const [pedirTasks,setPedirTasks]=useState(false);
 
   useEffect(()=>{
     getTasks("tasks",(tasks)=>{
       setTasks([...tasks]);
-      setPedirTasks(false);
+      //setPedirTasks(false);
     })//Igual podira funcionar sin desestructurar, pero por si las moscas.
 
-  },[pedirTasks])
+  },[])
 
   return (
     <>
-      <AddTask setPedirTasks={setPedirTasks}/>
-      <TaskList tasks={tasks} setTasks={setTasks} setPedirTasks={setPedirTasks}/>
+      <AddTask tasks={tasks} setTasks={setTasks}/>
+      <TaskList tasks={tasks} setTasks={setTasks}/>
     </>
   )
 }

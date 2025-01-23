@@ -1,6 +1,6 @@
 import { useState } from "react"
 import {postTasks} from "../servicios/postTasks"
-export default function AddTask({setPedirTasks}) {
+export default function AddTask({tasks,setTasks}) {
 
   const [newTask,setNewTask] = useState('')
 
@@ -11,8 +11,8 @@ export default function AddTask({setPedirTasks}) {
     //setNewTask('')
 
     // Usando peticiones
-    postTasks("tasks",{"name":newTask},()=>{
-        setPedirTasks(true)
+    postTasks("tasks",{"name":newTask},(data)=>{
+        setTasks([...tasks,data])
         alert("Tarea Añadida con exito")
     });
 
